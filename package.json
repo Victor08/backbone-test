@@ -1,0 +1,17 @@
+{
+  "name": "backbone-test",
+  "version": "1.0.0",
+  "description": "Switching to a more modular approach to writing JavaScript is unfortunately a more difficult process than we might hope. Once you understand the concept of AMD, you then have to figure out the logistics.",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp-requirejs": "^0.1.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

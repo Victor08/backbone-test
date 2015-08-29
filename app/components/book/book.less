@@ -1,0 +1,52 @@
+@book-background: whitesmoke;
+
+@book-icon-width: 50px;
+@book-icon-offset: 11px;
+
+@navigation-button-width: 80px;
+
+@transition: .2s ease;
+
+
+.book{
+  display: block;
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: @book-background;
+  margin: auto;
+  color: black;
+}
+
+.book__navigation {
+  display: block;
+  position: absolute;
+  width: @navigation-button-width;
+  height: 100%;
+  top:0;
+  cursor: pointer;
+  opacity: 0;
+
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: @book-icon-width auto;
+
+  transition: opacity @transition;
+
+  &:hover {
+   opacity: .2;
+  }
+
+}
+
+.book__navigation--back {
+  left: 0;
+  background-position: @book-icon-offset center;
+  background-image: url('./../img/icons/back.svg');
+}
+
+.book__navigation--forth {
+  right: 0;
+  background-position: (@navigation-button-width - @book-icon-width - @book-icon-offset) center;
+  background-image: url('./../img/icons/forth.svg');
+}
