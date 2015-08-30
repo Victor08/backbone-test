@@ -12,10 +12,30 @@
   display: block;
   position: relative;
   width: 600px;
-  height: 400px;
+  height: auto;
   background-color: @book-background;
   margin: auto;
+
+}
+
+.book__content {
   color: black;
+  padding: 20px;
+  text-align: justify;
+}
+
+.book__img {
+  width: 50%;
+}
+
+.book__img--right {
+  float: right;
+  margin: 5px 0 5px 5px;
+}
+
+.book__img--left {
+  float: left;
+  margin: 5px 5px 5px 0;
 }
 
 .book__navigation {
@@ -49,4 +69,9 @@
   right: 0;
   background-position: (@navigation-button-width - @book-icon-width - @book-icon-offset) center;
   background-image: url('./../img/icons/forth.svg');
+}
+
+.book__page-number {
+  text-align: center;
+  font-weight: bold;
 }

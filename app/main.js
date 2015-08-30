@@ -5,7 +5,13 @@
 //    'backbone': 'vendor/backbone/backbone'
 //  }
 //});
-
-require(['scripts/views/app'], function(AppView) {
-  new AppView;
+'use strict';
+require([
+    'backbone',
+    'scripts/views/app',
+    'scripts/routers/router'
+], function(AppView, BookRouter) {
+    new BookRouter();
+    Backbone.history.start();
+    new AppView;
 });
