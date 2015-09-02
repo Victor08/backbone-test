@@ -3,17 +3,18 @@ define([
     'jquery',
     'underscore',
     'text!components/book/book.html',
-    'scripts/models/book-page'
-], function(Backbone, $, _, bookTemplate, BookPage) {
+    'scripts/models/book',
+    'text!components/book/page.html'
+], function(Backbone, $, _, bookTpl, Book, pageTpl) {
     'use strict';
 
     var App = Backbone.View.extend({
 
         el: 'body',
 
-        currentPage: {},
+        template: _.template(bookTpl),
 
-        template: _.template(bookTemplate),
+        pageTpl: _.template(pageTpl),
 
         events: {
             'click [data-action="book.nextPage"]': 'showNextPage',
@@ -21,35 +22,31 @@ define([
         },
 
         initialize: function() {
-            this.currentPage = new BookPage({
-                num: 1
-            });
-            this.currentPage.on('change', this.handlePageChange.bind(this));
+            this.model.on('change', this.handlePageChange.bind(this));
             this.render();
         },
 
         showNextPage: function(){
-            console.log('next page');
-            var num = this.currentPage.attributes.num + 1;
-            this.currentPage.changePage(num);
+            var num = this.model.attributes.num + 1;
+            this.model.changePage(num);
         },
 
         showPrevPage: function(){
-            var num = this.currentPage.attributes.num - 1;
-            this.currentPage.changePage(num);
+            var num = this.model.attributes.num - 1;
+            this.model.changePage(num);
         },
 
         handlePageChange: function(){
-            this.render();
+            var page = this.pageTpl({
+                num: this.model.attributes.num,
+                text: this.model.attributes.text
+            });
+            $('#bookTextContent', this.el).empty().append(page);
         },
 
         render: function(){
-            console.log('render');
-            var page = this.template({
-                num: this.currentPage.attributes.num,
-                text: this.currentPage.attributes.text
-            });
-            $(this.el).empty().append(page);
+            var book = this.template();
+            $(this.el).empty().append(book);
         }
 
     });

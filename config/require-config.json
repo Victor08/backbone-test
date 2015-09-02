@@ -6,6 +6,7 @@
     "jquery": "vendor/jquery/dist/jquery",
     "underscore": "vendor/underscore/underscore",
     "backbone": "vendor/backbone/backbone",
-    "text": "vendor/requirejs-text/text"
+    "text": "vendor/requirejs-text/text",
+    "requirejs": "vendor/requirejs/require"
   }
 }
